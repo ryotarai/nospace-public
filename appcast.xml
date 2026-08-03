@@ -3,6 +3,16 @@
     <channel>
         <title>Nospace</title>
         <item>
+            <title>0.1.3</title>
+            <pubDate>Mon, 03 Aug 2026 23:58:56 +0900</pubDate>
+            <link>https://nospace.ryotarai.dev/</link>
+            <sparkle:version>0.1.3</sparkle:version>
+            <sparkle:shortVersionString>0.1.3</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <enclosure url="https://github.com/ryotarai/nospace-public/releases/download/v0.1.3/Nospace-0.1.3.zip" length="3429472" type="application/octet-stream" sparkle:edSignature="AM1D75YwNcxSI0Pi3CPQUY1yvIqj4z1wQHhSGOpZX4nxHvGe1LMuEtNvx+0ncenGDyL0cIN0aXeCnPbYkPGTCA=="/>
+        </item>
+        <item>
             <title>0.1.2</title>
             <pubDate>Mon, 03 Aug 2026 14:40:18 +0900</pubDate>
             <link>https://nospace.ryotarai.dev/</link>
