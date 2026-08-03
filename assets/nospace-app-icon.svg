@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <!-- Background Gradients -->
+        <linearGradient id="bgGradient" x1="50%" y1="0%" x2="50%" y2="100%">
+            <stop offset="0%" stop-color="#0E2244"/>
+            <stop offset="40%" stop-color="#0C1C36"/>
+            <stop offset="100%" stop-color="#050C17"/>
+        </linearGradient>
+
+        <radialGradient id="topGlow" cx="50%" cy="15%" r="65%">
+            <stop offset="0%" stop-color="#3B6DFF" stop-opacity="0.35"/>
+            <stop offset="60%" stop-color="#3B6DFF" stop-opacity="0.05"/>
+            <stop offset="100%" stop-color="#3B6DFF" stop-opacity="0"/>
+        </radialGradient>
+
+        <radialGradient id="cursorGlow" cx="30%" cy="50%" r="40%">
+            <stop offset="0%" stop-color="#9CCBFF" stop-opacity="0.4"/>
+            <stop offset="50%" stop-color="#3B6DFF" stop-opacity="0.15"/>
+            <stop offset="100%" stop-color="#0C1C36" stop-opacity="0"/>
+        </radialGradient>
+
+        <!-- Motif Gradients -->
+        <linearGradient id="beamGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#9CCBFF"/>
+            <stop offset="50%" stop-color="#F7FAFF"/>
+            <stop offset="100%" stop-color="#3B6DFF"/>
+        </linearGradient>
+
+        <linearGradient id="waveGradient" x1="0%" y1="30%" x2="100%" y2="70%">
+            <stop offset="0%" stop-color="#3B6DFF"/>
+            <stop offset="45%" stop-color="#9CCBFF"/>
+            <stop offset="85%" stop-color="#F7FAFF"/>
+            <stop offset="100%" stop-color="#9CCBFF"/>
+        </linearGradient>
+
+        <linearGradient id="loopGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#F7FAFF"/>
+            <stop offset="50%" stop-color="#9CCBFF"/>
+            <stop offset="100%" stop-color="#3B6DFF"/>
+        </linearGradient>
+
+        <!-- Border Overlay Gradient -->
+        <linearGradient id="borderGradient" x1="50%" y1="0%" x2="50%" y2="100%">
+            <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.22"/>
+            <stop offset="50%" stop-color="#FFFFFF" stop-opacity="0.05"/>
+            <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.02"/>
+        </linearGradient>
+
+        <!-- Shadow Filters -->
+        <filter id="dropShadow" x="-20%" y="-20%" width="140%" height="140%">
+            <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000000" flood-opacity="0.5"/>
+        </filter>
+
+        <filter id="glowEffect" x="-30%" y="-30%" width="160%" height="160%">
+            <feGaussianBlur stdDeviation="18" result="blur"/>
+            <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+        </filter>
+
+        <!-- macOS Squircle Clip Path -->
+        <clipPath id="squircleClip">
+            <path d="M 512,102 C 674,102 730,105 802,146 C 864,182 918,236 954,298 C 995,370 998,426 998,588 C 998,750 995,806 954,878 C 918,940 864,994 802,1030 C 730,1071 674,1074 512,1074 C 350,1074 294,1071 222,1030 C 160,994 106,940 70,878 C 29,806 26,750 26,588 C 26,426 29,370 70,298 C 106,236 160,182 222,146 C 294,105 350,102 512,102 Z" transform="translate(0, -50) scale(0.9) transform-origin(512 512)"/>
+        </clipPath>
+    </defs>
+
+    <!-- Standard Icon Canvas (1024x1024 with optical margin) -->
+    <g id="AppIcon">
+        <!-- Main Squircle Background Body -->
+        <rect x="100" y="100" width="824" height="824" rx="185" ry="185" fill="url(#bgGradient)" filter="url(#dropShadow)"/>
+        <rect x="100" y="100" width="824" height="824" rx="185" ry="185" fill="url(#topGlow)"/>
+        <rect x="100" y="100" width="824" height="824" rx="185" ry="185" fill="url(#cursorGlow)"/>
+
+        <!-- Subtle Inner Border Highlight -->
+        <rect x="100" y="100" width="824" height="824" rx="185" ry="185" fill="none" stroke="url(#borderGradient)" stroke-width="4"/>
+
+        <!-- ICON MOTIF: Input Cursor + Flowing Kana Reconstruction Loop -->
+        <g id="Motif" transform="translate(512, 512) scale(1.05) translate(-512, -512)">
+
+            <!-- Ambient Glow behind cursor & sweep -->
+            <path d="M 320,290 L 320,734 M 320,440 C 430,360 620,350 700,450 C 770,540 710,670 590,670 C 480,670 420,570 480,480 C 530,400 660,370 730,420"
+                  fill="none" stroke="#3B6DFF" stroke-width="64" stroke-linecap="round" stroke-linejoin="round" opacity="0.3" filter="url(#glowEffect)"/>
+
+            <!-- 1. The Luminous Input Cursor Beam (Left side) -->
+            <!-- Top / Bottom Serifs / Anchors for I-beam cursor feel -->
+            <path d="M 280,300 L 360,300" stroke="url(#beamGradient)" stroke-width="20" stroke-linecap="round"/>
+            <path d="M 280,724 L 360,724" stroke="url(#beamGradient)" stroke-width="20" stroke-linecap="round"/>
+
+            <!-- Vertical Cursor Body -->
+            <line x1="320" y1="300" x2="320" y2="724" stroke="url(#beamGradient)" stroke-width="36" stroke-linecap="round"/>
+            <line x1="320" y1="320" x2="320" y2="704" stroke="#F7FAFF" stroke-width="14" stroke-linecap="round"/>
+
+            <!-- 2. Dynamic Transformation Wave (Flowing Romaji -> Kana motif) -->
+            <!-- Main Flowing Loop (Swooping out from cursor across center and looping smoothly back) -->
+            <path d="M 320,450 
+                     C 440,365 630,350 710,445 
+                     C 785,535 725,670 595,670 
+                     C 485,670 435,570 490,485 
+                     C 535,415 650,380 740,425"
+                  fill="none" 
+                  stroke="url(#waveGradient)" 
+                  stroke-width="42" 
+                  stroke-linecap="round" 
+                  stroke-linejoin="round"/>
+
+            <!-- Inner Luminous Core Accent for the Kana Arc -->
+            <path d="M 350,445 
+                     C 450,380 620,368 690,445 
+                     C 750,520 705,640 595,640 
+                     C 505,640 460,560 505,490 
+                     C 540,435 640,405 720,435"
+                  fill="none" 
+                  stroke="#F7FAFF" 
+                  stroke-width="12" 
+                  stroke-linecap="round" 
+                  opacity="0.85"/>
+
+            <!-- Luminous Spark / Orb at Transformation Point -->
+            <circle cx="740" cy="425" r="16" fill="#F7FAFF" filter="url(#glowEffect)"/>
+            <circle cx="740" cy="425" r="10" fill="#FFFFFF"/>
+        </g>
+    </g>
+</svg>
