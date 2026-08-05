@@ -3,6 +3,16 @@
     <channel>
         <title>Nospace</title>
         <item>
+            <title>0.1.7</title>
+            <pubDate>Wed, 05 Aug 2026 09:46:17 +0900</pubDate>
+            <link>https://nospace.ryotarai.dev/</link>
+            <sparkle:version>0.1.7</sparkle:version>
+            <sparkle:shortVersionString>0.1.7</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <enclosure url="https://github.com/ryotarai/nospace-public/releases/download/v0.1.7/Nospace-0.1.7.zip" length="3546177" type="application/octet-stream" sparkle:edSignature="s7JfkfTDi6oU4Fl6WnuQHEWezyeSy2A+ZFN++KNbhz+CmghTzUGSswv5C9u3OnO1Vl5ekeCqnmPbIKJJU/G2BA=="/>
+        </item>
+        <item>
             <title>0.1.6</title>
             <pubDate>Tue, 04 Aug 2026 10:07:23 +0900</pubDate>
             <link>https://nospace.ryotarai.dev/</link>
@@ -21,16 +31,6 @@
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
             <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
             <enclosure url="https://github.com/ryotarai/nospace-public/releases/download/v0.1.5/Nospace-0.1.5.zip" length="3435859" type="application/octet-stream" sparkle:edSignature="Wn0FXp1GEiK7BykFcu47VA7qB5rzM0usE9cA86069Uo3IHQalmLoPyMfda4z4Ol3aMDoyK8us/JOHIahTmLWCw=="/>
-        </item>
-        <item>
-            <title>0.1.4</title>
-            <pubDate>Tue, 04 Aug 2026 08:44:04 +0900</pubDate>
-            <link>https://nospace.ryotarai.dev/</link>
-            <sparkle:version>0.1.4</sparkle:version>
-            <sparkle:shortVersionString>0.1.4</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <enclosure url="https://github.com/ryotarai/nospace-public/releases/download/v0.1.4/Nospace-0.1.4.zip" length="3437514" type="application/octet-stream" sparkle:edSignature="aD5Ai7S4UVfgXpK1R+OuWPZpzy73OSfKR1w8vWhxl92hCKJNxvN55mDQs2nt5SROs7fGzAdfE4Jh7A/OVKIbAg=="/>
         </item>
     </channel>
 </rss>
