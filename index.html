@@ -7,7 +7,7 @@
   <meta name="theme-color" content="#ffffff">
   <title data-i18n="document.title">Nospace — もう、スペースキーで変換しない。</title>
   <link rel="icon" href="assets/nospace-app-icon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css?v=nospace-20260805">
+  <link rel="stylesheet" href="styles.css?v=nospace-20260805-x">
   <script src="script.js" defer></script>
   <script>
     const consentKey = 'nospace-analytics-consent';
@@ -306,6 +306,11 @@
         <span data-i18n="nav.download">ダウンロード</span>
         <span class="button__arrow" aria-hidden="true">↓</span>
       </a>
+      <aside class="social-callout" aria-label="Nospaceの最新情報">
+        <span class="social-callout__mark" aria-hidden="true">X</span>
+        <p><strong>最新情報はXで。</strong><small>リリースや使い方の更新をお知らせします。</small></p>
+        <a href="https://x.com/nospace_app" target="_blank" rel="noopener noreferrer" aria-label="Nospace公式Xアカウントをフォロー（新しいタブ）">@nospace_app をフォロー <span aria-hidden="true">↗</span></a>
+      </aside>
     </section>
   </main>
 
@@ -316,7 +321,13 @@
         <span class="brand__text"><strong>Nospace</strong></span>
       </a>
       <p data-i18n="footer.tagline">入力を、考える速さに。</p>
-      <div class="site-footer__links"><a href="#privacy" data-i18n="nav.privacy">データと権限</a><a href="#pricing" data-i18n="nav.cost">料金</a><a href="#download" data-i18n="nav.download">ダウンロード</a><button type="button" data-consent-settings data-i18n="consent.settings">Cookie設定</button></div>
+      <div class="site-footer__links">
+        <a href="#privacy" data-i18n="nav.privacy">データと権限</a>
+        <a href="#pricing" data-i18n="nav.cost">料金</a>
+        <a href="#download" data-i18n="nav.download">ダウンロード</a>
+        <a href="https://x.com/nospace_app" target="_blank" rel="noopener noreferrer" aria-label="Nospace公式Xアカウントを開く（新しいタブ）">X / @nospace_app <span aria-hidden="true">↗</span></a>
+        <button type="button" data-consent-settings data-i18n="consent.settings">Cookie設定</button>
+      </div>
       <small class="site-footer__copyright">© 2026 Nospace</small>
     </div>
   </footer>

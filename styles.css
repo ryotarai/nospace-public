@@ -1697,6 +1697,70 @@ kbd {
   margin-top: 30px;
 }
 
+.social-callout {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  width: min(620px, 100%);
+  margin-top: 42px;
+  padding: 14px 16px;
+  gap: 14px;
+  border: 1px solid var(--rule);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.72);
+  text-align: left;
+}
+
+.social-callout__mark {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--paper);
+  background: var(--ink);
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.social-callout p,
+.social-callout small {
+  margin: 0;
+}
+
+.social-callout p {
+  display: grid;
+  line-height: 1.35;
+}
+
+.social-callout strong {
+  font-size: 12px;
+}
+
+.social-callout p small {
+  margin-top: 3px;
+  color: var(--ink-soft);
+  font-size: 10px;
+}
+
+.social-callout a {
+  padding: 9px 12px;
+  border-radius: 999px;
+  color: var(--paper);
+  background: var(--ink);
+  font-size: 10px;
+  font-weight: 800;
+  white-space: nowrap;
+  transition: color 180ms ease, background 180ms ease, transform 180ms ease;
+}
+
+.social-callout a:hover {
+  color: var(--ink);
+  background: var(--mint);
+  transform: translateY(-2px);
+}
+
 .download-section small {
   margin-top: 18px;
   color: var(--ink-soft);
@@ -2266,6 +2330,17 @@ kbd {
 
   .download-section .button {
     width: 100%;
+  }
+
+  .social-callout {
+    grid-template-columns: auto 1fr;
+    padding: 16px;
+  }
+
+  .social-callout a {
+    grid-column: 1 / -1;
+    padding: 12px;
+    text-align: center;
   }
 }
 
