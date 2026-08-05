@@ -7,13 +7,34 @@
   <meta name="theme-color" content="#ffffff">
   <title data-i18n="document.title">Nospace — もう、スペースキーで変換しない。</title>
   <link rel="icon" href="assets/nospace-app-icon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css?v=nospace-20260804">
+  <link rel="stylesheet" href="styles.css?v=nospace-20260805">
   <script src="script.js" defer></script>
+  <script>
+    const consentKey = 'nospace-analytics-consent';
+    const analyticsConsent = (() => {
+      try {
+        const savedConsent = localStorage.getItem(consentKey);
+        return savedConsent === 'granted' || savedConsent === 'denied'
+          ? savedConsent
+          : null;
+      } catch {
+        return null;
+      }
+    })();
+
+    window.nospaceAnalyticsConsent = analyticsConsent;
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      analytics_storage: analyticsConsent === 'granted' ? 'granted' : 'denied',
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied'
+    });
+  </script>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-86L1KRLD1S"></script>
   <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
 
     gtag('config', 'G-86L1KRLD1S');
@@ -267,7 +288,7 @@
             <span class="privacy-analytics__label">WEBSITE ANALYTICS</span>
             <h3 id="privacy-analytics-title" data-i18n="privacy.analytics.title">Webサイトのアクセス解析</h3>
           </div>
-          <p data-i18n="privacy.analytics.text">このWebサイトでは、Google AnalyticsがCookieを使用してアクセス状況を分析します。アクセス情報はGoogleに送信されます。収集・処理の仕組みはGoogleによる情報の利用についてをご確認ください。</p>
+          <p data-i18n="privacy.analytics.text">このWebサイトではGoogle Analyticsを使用します。同意するとCookieを使ってアクセス状況を分析します。同意しない場合も、Cookieを使用しない限定的な情報がGoogleに送信されます。</p>
           <div class="privacy-analytics__links">
             <a href="https://policies.google.com/technologies/partner-sites?hl=ja" target="_blank" rel="noopener noreferrer" data-i18n-aria-label="privacy.analytics.linkLabel" aria-label="Googleによる情報の利用について見る（新しいタブ）"><span data-i18n="privacy.analytics.link">Googleによる情報の利用について</span><span aria-hidden="true">↗</span></a>
             <a href="https://policies.google.com/privacy?hl=ja" target="_blank" rel="noopener noreferrer" data-i18n-aria-label="privacy.analytics.privacyLinkLabel" aria-label="Googleのプライバシーポリシーを見る（新しいタブ）"><span data-i18n="privacy.analytics.privacyLink">Googleのプライバシーポリシー</span><span aria-hidden="true">↗</span></a>
@@ -295,9 +316,24 @@
         <span class="brand__text"><strong>Nospace</strong></span>
       </a>
       <p data-i18n="footer.tagline">入力を、考える速さに。</p>
-      <div class="site-footer__links"><a href="#privacy" data-i18n="nav.privacy">データと権限</a><a href="#pricing" data-i18n="nav.cost">料金</a><a href="#download" data-i18n="nav.download">ダウンロード</a></div>
+      <div class="site-footer__links"><a href="#privacy" data-i18n="nav.privacy">データと権限</a><a href="#pricing" data-i18n="nav.cost">料金</a><a href="#download" data-i18n="nav.download">ダウンロード</a><button type="button" data-consent-settings data-i18n="consent.settings">Cookie設定</button></div>
       <small class="site-footer__copyright">© 2026 Nospace</small>
     </div>
   </footer>
+
+  <section class="consent-banner" data-consent-banner hidden role="dialog" aria-modal="false" aria-labelledby="consent-title" aria-describedby="consent-description">
+    <div class="consent-banner__inner shell">
+      <div class="consent-banner__copy">
+        <span class="consent-banner__label">ANALYTICS CHOICE</span>
+        <h2 id="consent-title" tabindex="-1" data-i18n="consent.title">アクセス解析の設定</h2>
+        <p id="consent-description" data-i18n="consent.text">同意すると、Google AnalyticsがCookieを使用してアクセス状況を分析します。同意しない場合も、Cookieを使用しない限定的な情報がGoogleに送信されます。選択は後から変更できます。</p>
+        <a href="#privacy" data-i18n="consent.details">データの扱いを見る</a>
+      </div>
+      <div class="consent-banner__actions">
+        <button class="consent-button consent-button--secondary" type="button" data-consent-choice="denied" data-i18n="consent.deny">同意しない</button>
+        <button class="consent-button consent-button--primary" type="button" data-consent-choice="granted" data-i18n="consent.grant">同意する</button>
+      </div>
+    </div>
+  </section>
 </body>
 </html>

@@ -84,11 +84,17 @@
       "privacy.footnotes.storageTitle": "アプリの保存",
       "privacy.footnotes.storageText": "入力と候補はディスクに保存しません。",
       "privacy.analytics.title": "Webサイトのアクセス解析",
-      "privacy.analytics.text": "このWebサイトでは、Google AnalyticsがCookieを使用してアクセス状況を分析します。アクセス情報はGoogleに送信されます。収集・処理の仕組みはGoogleによる情報の利用についてをご確認ください。",
+      "privacy.analytics.text": "このWebサイトではGoogle Analyticsを使用します。同意するとCookieを使ってアクセス状況を分析します。同意しない場合も、Cookieを使用しない限定的な情報がGoogleに送信されます。",
       "privacy.analytics.link": "Googleによる情報の利用について",
       "privacy.analytics.linkLabel": "Googleによる情報の利用について見る（新しいタブ）",
       "privacy.analytics.privacyLink": "Googleのプライバシーポリシー",
       "privacy.analytics.privacyLinkLabel": "Googleのプライバシーポリシーを見る（新しいタブ）",
+      "consent.title": "アクセス解析の設定",
+      "consent.text": "同意すると、Google AnalyticsがCookieを使用してアクセス状況を分析します。同意しない場合も、Cookieを使用しない限定的な情報がGoogleに送信されます。選択は後から変更できます。",
+      "consent.details": "データの扱いを見る",
+      "consent.deny": "同意しない",
+      "consent.grant": "同意する",
+      "consent.settings": "Cookie設定",
       "download.title": "次の一文を、<br><span>すぐ書こう。</span>",
       "download.lede": "macOS 14以降。すぐに始められます。",
       "download.linkLabel": "Nospaceをダウンロード（新しいタブ）",
@@ -126,6 +132,86 @@
   };
 
   applyTranslations();
+
+  const consentStorageKey = "nospace-analytics-consent";
+  const consentBanner = document.querySelector("[data-consent-banner]");
+  const consentHeading = document.querySelector("#consent-title");
+  const consentChoiceButtons = document.querySelectorAll("[data-consent-choice]");
+  const consentSettingsButtons = document.querySelectorAll("[data-consent-settings]");
+  let consentReturnFocus = null;
+
+  const readConsent = () => {
+    try {
+      const savedConsent = localStorage.getItem(consentStorageKey);
+      return savedConsent === "granted" || savedConsent === "denied"
+        ? savedConsent
+        : null;
+    } catch {
+      return null;
+    }
+  };
+
+  const showConsentBanner = ({ moveFocus = false } = {}) => {
+    if (!consentBanner) {
+      return;
+    }
+
+    consentBanner.hidden = false;
+    if (moveFocus) {
+      consentHeading?.focus();
+    }
+  };
+
+  const hideConsentBanner = () => {
+    if (!consentBanner) {
+      return;
+    }
+
+    consentBanner.hidden = true;
+    if (consentReturnFocus instanceof HTMLElement) {
+      consentReturnFocus.focus();
+    }
+    consentReturnFocus = null;
+  };
+
+  const updateAnalyticsConsent = (choice) => {
+    try {
+      localStorage.setItem(consentStorageKey, choice);
+    } catch {
+      // The current-page choice still applies when storage is unavailable.
+    }
+
+    window.nospaceAnalyticsConsent = choice;
+    if (typeof window.gtag === "function") {
+      window.gtag("consent", "update", {
+        analytics_storage: choice,
+        ad_storage: "denied",
+        ad_user_data: "denied",
+        ad_personalization: "denied"
+      });
+    }
+    hideConsentBanner();
+  };
+
+  consentChoiceButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const choice = button.dataset.consentChoice;
+      if (choice === "granted" || choice === "denied") {
+        updateAnalyticsConsent(choice);
+      }
+    });
+  });
+
+  consentSettingsButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      consentReturnFocus = button;
+      showConsentBanner({ moveFocus: true });
+    });
+  });
+
+  if (readConsent() === null) {
+    showConsentBanner();
+  }
 
   const video = document.querySelector("#hero-video");
   const media = video?.closest(".hero-media");
