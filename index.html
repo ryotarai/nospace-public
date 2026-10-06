@@ -59,6 +59,18 @@
         <a href="#privacy" data-i18n="nav.privacy">データと権限</a>
       </nav>
 
+      <select class="language-selector" data-language-selector aria-label="表示言語" hidden>
+        <option value="ja" lang="ja">日本語</option>
+        <option value="en" lang="en">English</option>
+        <option value="zh-Hans" lang="zh-Hans">简体中文</option>
+        <option value="zh-Hant" lang="zh-Hant">繁體中文</option>
+        <option value="es" lang="es">Español</option>
+        <option value="hi" lang="hi">हिन्दी</option>
+        <option value="pt" lang="pt">Português</option>
+        <option value="fr" lang="fr">Français</option>
+        <option value="it" lang="it">Italiano</option>
+      </select>
+
       <a class="button button--compact button--dark" href="https://github.com/ryotarai/nospace-public/releases/download/v0.1.8/Nospace-0.1.8.zip" target="_blank" rel="noopener noreferrer" data-release-download data-i18n-aria-label="download.linkLabel" aria-label="Nospaceをダウンロード（新しいタブ）">
         <span data-i18n="nav.download">ダウンロード</span>
         <span class="button__arrow" aria-hidden="true">↓</span>
@@ -89,138 +101,48 @@
       <div class="hero__visual">
         <div class="hero__visual-meta">
           <span><span class="live-dot" aria-hidden="true"></span> <span data-i18n="hero.demoMeta">PRODUCT DEMO</span></span>
-          <button class="hero-demo-toggle" type="button" data-demo-toggle data-i18n-aria-label="hero.demoTogglePause" aria-label="デモアニメーションを一時停止">
-            <span class="hero-demo-toggle__icon" aria-hidden="true">Ⅱ</span>
-            <span data-demo-toggle-label>PAUSE</span>
+          <button class="hero-video-toggle" type="button" data-video-toggle aria-label="デモ動画を一時停止">
+            <span class="hero-video-toggle__icon" aria-hidden="true">Ⅱ</span>
+            <span data-video-toggle-label>PAUSE</span>
           </button>
         </div>
-        <div class="hero-media" data-demo-state="ready" data-demo-phase="idle" data-motion="normal">
-          <div class="hero-demo" data-demo-root role="img" data-i18n-aria-label="hero.visualAria" aria-label="Nospaceでローマ字を入力し、自然な日本語候補を選ぶデモ画面" aria-hidden="true">
-            <svg class="hero-demo__backdrop" viewBox="0 0 1280 720" preserveAspectRatio="none" aria-hidden="true">
-              <defs>
-                <linearGradient id="demo-wallpaper" x1="0" x2="1" y1="0" y2="1">
-                  <stop offset="0" stop-color="#9adcf0"></stop>
-                  <stop offset="0.42" stop-color="#168bdf"></stop>
-                  <stop offset="1" stop-color="#101f9e"></stop>
-                </linearGradient>
-                <radialGradient id="demo-glow" cx="0.5" cy="0.5" r="0.75">
-                  <stop offset="0" stop-color="#35b6ff" stop-opacity="0.8"></stop>
-                  <stop offset="1" stop-color="#0a1b7d" stop-opacity="0"></stop>
-                </radialGradient>
-                <filter id="demo-editor-shadow" x="-20%" y="-30%" width="140%" height="170%">
-                  <feDropShadow dx="0" dy="24" stdDeviation="24" flood-color="#001067" flood-opacity="0.35"></feDropShadow>
-                </filter>
-              </defs>
-              <rect width="1280" height="720" fill="url(#demo-wallpaper)"></rect>
-              <rect width="1280" height="720" fill="url(#demo-glow)"></rect>
-              <path d="M-20 34C260 22 390 106 620 117S1020 98 1320 0" fill="none" stroke="#ffffff" stroke-opacity="0.72" stroke-width="5"></path>
-              <path d="M-110 714C170 604 324 553 580 579s395 130 810 36" fill="none" stroke="#72d9ff" stroke-opacity="0.36" stroke-width="70"></path>
-              <circle cx="1050" cy="126" r="188" fill="none" stroke="#ffffff" stroke-opacity="0.15" stroke-width="2"></circle>
-              <circle cx="1050" cy="126" r="214" fill="none" stroke="#ffffff" stroke-opacity="0.08" stroke-width="2"></circle>
-            </svg>
-
-            <div class="demo-editor" data-demo-editor>
-              <div class="demo-editor__toolbar">
-                <span class="demo-editor__lights" aria-hidden="true"><i></i><i></i><i></i></span>
-                <span class="demo-editor__title"><strong data-i18n="hero.demoEditorTitle">Nospace</strong><small data-i18n="hero.demoEditorSubtitle">編集済み</small></span>
-                <span class="demo-editor__mode" data-i18n="hero.demoEditorMode">Plain Text</span>
-                <span class="demo-editor__info" aria-hidden="true">ⓘ</span>
+        <div class="hero-media" data-video-state="loading" data-motion="normal">
+          <video id="hero-video" class="hero-video" data-hero-video muted loop playsinline preload="metadata" poster="assets/hero-poster.svg" aria-hidden="true" tabindex="-1">
+            <source src="assets/nospace-demo.mp4" type="video/mp4">
+          </video>
+          <div class="hero-fallback" role="img" data-i18n-aria-label="hero.visualAria" aria-label="Nospaceでローマ字を入力し、自然な日本語候補を選ぶデモ画面">
+            <div class="fallback-window">
+              <div class="fallback-window__bar">
+                <span class="fallback-window__lights" aria-hidden="true"><i></i><i></i><i></i></span>
+                <span>Nospace</span>
+                <span class="fallback-window__language"><span data-i18n="hero.demoPanelLanguageTarget">日本語</span> <b>⌄</b></span>
               </div>
-              <div class="demo-editor__body">
-                <span class="demo-editor__line-number" data-i18n="hero.demoEditorLine">1</span>
-                <p class="demo-editor__text"><span data-demo-editor-text></span><span class="demo-editor__caret" data-demo-editor-caret aria-hidden="true"></span></p>
-              </div>
-              <div class="demo-editor__status" data-demo-editor-status data-i18n="hero.demoEditorStatus">行: 1　文字: 0　位置: 0</div>
-            </div>
-
-            <div class="demo-composer" data-demo-panel>
-              <div class="demo-composer__topbar">
-                <div class="demo-composer__topbar-start">
-                  <span class="demo-composer__settings" data-i18n-aria-label="hero.demoPanelSettings" aria-label="デモ設定">⚙</span>
-                  <span class="demo-composer__candidate-count" data-demo-candidate-count data-i18n="hero.demoPanelCandidateCount">1 件の候補</span>
-                  <span class="demo-composer__control"><span data-i18n="hero.demoPanelAdjust">調整</span><kbd>⌘J</kbd></span>
-                  <span class="demo-composer__control"><span data-i18n="hero.demoPanelRegenerate">再生成</span><kbd>⌘R</kbd></span>
-                  <span class="demo-composer__control"><span data-i18n="hero.demoPanelAddDictionary">単語を登録</span><kbd>⌘D</kbd></span>
-                  <span class="demo-composer__languages" data-demo-language-control>
-                    <span class="is-selected" data-demo-language-target>日本語</span>
-                    <span class="demo-composer__language-chevron" aria-hidden="true">⌄</span>
-                  </span>
+              <div class="fallback-window__body">
+                <p class="fallback-label" data-i18n="demo.input">INPUT</p>
+                <p class="fallback-input" data-i18n="demo.rawInput">nospacenara,utimatigeegaattemo,omoituitakotobawosubayakusizennnabunnsyounikaetekuremasu</p>
+                <div class="fallback-cursor" aria-hidden="true"></div>
+                <div class="fallback-divider"></div>
+                <div class="fallback-result">
+                  <span class="fallback-result__index">01</span>
+                  <strong data-i18n="demo.resultOne">Nospaceなら、打ち間違いがあっても、思いついた言葉を素早く自然な文章に変えてくれます。</strong>
+                  <span class="fallback-result__check" aria-hidden="true">✓</span>
                 </div>
-                <span class="demo-composer__input-preview" data-demo-input-preview></span>
-              </div>
-              <div class="demo-composer__input-row">
-                <span class="demo-composer__input" data-demo-input data-demo-placeholder="true" data-i18n="hero.demoPanelInputPlaceholder">ローマ字で入力…</span>
-                <span class="demo-composer__caret" data-demo-input-caret aria-hidden="true"></span>
-              </div>
-              <div class="demo-composer__loading" data-demo-loading>
-                <span class="demo-composer__loading-dot" aria-hidden="true"></span>
-                <span data-i18n="hero.demoPanelLoading">自然な日本語に変換しています</span>
-                <span class="demo-composer__cancel" data-i18n="hero.demoPanelCancel">キャンセル</span>
-              </div>
-              <div class="demo-composer__candidates" data-demo-candidates>
-                <div class="demo-composer__candidate is-selected" data-demo-candidate>
-                  <span class="demo-composer__candidate-index">01</span>
-                  <span data-demo-candidate-text></span>
-                  <span class="demo-composer__candidate-actions"><span class="demo-composer__candidate-action" data-i18n="hero.demoPanelEdit">編集　↪</span><span class="demo-composer__candidate-action" data-i18n="hero.demoPanelTranslate">翻訳　⌘T</span></span>
+                <div class="fallback-result fallback-result--quiet">
+                  <span class="fallback-result__index">02</span>
+                  <span data-i18n="demo.resultTwo">Nospaceなら、打ち間違いがあっても、思い付いた言葉を素早く自然な文章に変えてくれます。</span>
                 </div>
-                <div class="demo-composer__candidate" data-demo-candidate>
-                  <span class="demo-composer__candidate-index">02</span>
-                  <span data-demo-candidate-text></span>
-                  <span class="demo-composer__candidate-actions"><span class="demo-composer__candidate-action" data-i18n="hero.demoPanelEdit">編集　↪</span><span class="demo-composer__candidate-action" data-i18n="hero.demoPanelTranslate">翻訳　⌘T</span></span>
+                <div class="fallback-result fallback-result--quiet">
+                  <span class="fallback-result__index">03</span>
+                  <span data-i18n="demo.resultThree">Nospaceなら、誤字があっても、思いついた言葉を素早く自然な文章に変えてくれます。</span>
                 </div>
-                <div class="demo-composer__candidate" data-demo-candidate>
-                  <span class="demo-composer__candidate-index">03</span>
-                  <span data-demo-candidate-text></span>
-                  <span class="demo-composer__candidate-actions"><span class="demo-composer__candidate-action" data-i18n="hero.demoPanelEdit">編集　↪</span><span class="demo-composer__candidate-action" data-i18n="hero.demoPanelTranslate">翻訳　⌘T</span></span>
-                </div>
-                <div class="demo-composer__candidate" data-demo-candidate>
-                  <span class="demo-composer__candidate-index">04</span>
-                  <span data-demo-candidate-text></span>
-                  <span class="demo-composer__candidate-actions"><span class="demo-composer__candidate-action" data-i18n="hero.demoPanelEdit">編集　↪</span><span class="demo-composer__candidate-action" data-i18n="hero.demoPanelTranslate">翻訳　⌘T</span></span>
-                </div>
-                <div class="demo-composer__candidate" data-demo-candidate>
-                  <span class="demo-composer__candidate-index">05</span>
-                  <span data-demo-candidate-text></span>
-                  <span class="demo-composer__candidate-actions"><span class="demo-composer__candidate-action" data-i18n="hero.demoPanelEdit">編集　↪</span><span class="demo-composer__candidate-action" data-i18n="hero.demoPanelTranslate">翻訳　⌘T</span></span>
-                </div>
-                <div class="demo-composer__candidate" data-demo-candidate>
-                  <span class="demo-composer__candidate-index">06</span>
-                  <span data-demo-candidate-text></span>
-                  <span class="demo-composer__candidate-actions"><span class="demo-composer__candidate-action" data-i18n="hero.demoPanelEdit">編集　↪</span><span class="demo-composer__candidate-action" data-i18n="hero.demoPanelTranslate">翻訳　⌘T</span></span>
-                </div>
-                <div class="demo-composer__candidate" data-demo-candidate>
-                  <span class="demo-composer__candidate-index">07</span>
-                  <span data-demo-candidate-text></span>
-                  <span class="demo-composer__candidate-actions"><span class="demo-composer__candidate-action" data-i18n="hero.demoPanelEdit">編集　↪</span><span class="demo-composer__candidate-action" data-i18n="hero.demoPanelTranslate">翻訳　⌘T</span></span>
-                </div>
-                <div class="demo-composer__candidate" data-demo-candidate>
-                  <span class="demo-composer__candidate-index">08</span>
-                  <span data-demo-candidate-text></span>
-                  <span class="demo-composer__candidate-actions"><span class="demo-composer__candidate-action" data-i18n="hero.demoPanelEdit">編集　↪</span><span class="demo-composer__candidate-action" data-i18n="hero.demoPanelTranslate">翻訳　⌘T</span></span>
-                </div>
-              </div>
-              <div class="demo-composer__footer">
-                <span class="demo-composer__convert" data-demo-footer-input><span data-i18n="hero.demoPanelConvert">変換</span><kbd>⌘↵</kbd></span>
-                <span class="demo-composer__footer-select" data-demo-footer-candidates><span data-i18n="hero.demoPanelSelect">↑↓ 選択</span></span>
-                <span class="demo-composer__footer-right">
-                  <span data-demo-footer-input><span data-i18n="hero.demoPanelShortcuts">↪ 改行</span></span>
-                  <span data-demo-footer-candidates><span data-i18n="hero.demoPanelInsert">↵ 挿入</span></span>
-                  <span>·</span>
-                  <span data-i18n="hero.demoPanelClose">esc 閉じる</span>
-                </span>
+                <div class="fallback-window__footer"><span data-i18n="demo.select">↑↓ 選択</span><span data-i18n="demo.insert">↩ 挿入</span><span data-i18n="demo.close">esc 閉じる</span></div>
               </div>
             </div>
+            <span class="fallback-spark fallback-spark--one" aria-hidden="true"></span>
+            <span class="fallback-spark fallback-spark--two" aria-hidden="true"></span>
           </div>
-          <noscript>
-            <div class="hero-demo-nojs" role="img" aria-label="Nospaceの日本語デモ。ローマ字入力から自然な候補を選べます。">
-              <div class="hero-demo-nojs__topbar"><span class="demo-composer__settings" aria-hidden="true">⚙</span><span class="hero-demo-nojs__language">日本語⌄</span></div>
-              <p class="hero-demo-nojs__input">nospacenara,utimatigeegaattemo,omoituitakotobawosubayakusizennnabunnsyounikaetekuremasu</p>
-              <p class="hero-demo-nojs__result"><span>01</span> Nospaceなら、打ち間違いがあっても、思いついた言葉を素早く自然な文章に変えてくれます。</p>
-              <div class="hero-demo-nojs__footer"><strong>変換　⌘↵</strong><span>↪ 改行　 ·　 esc 閉じる</span></div>
-            </div>
-          </noscript>
           <div class="hero-media__grain" aria-hidden="true"></div>
-          <p class="sr-only" data-i18n="hero.sr">音声のないデモで、ローマ字入力から自然な候補を表示し、選んだ結果を元のアプリへ戻す流れを確認できます。</p>
+          <p class="sr-only" data-i18n="hero.sr">音声のないデモ動画で、ローマ字入力から自然な日本語候補を表示して選ぶ流れを確認できます。</p>
         </div>
         <div class="hero__visual-foot">
           <span data-i18n="hero.visualFootInput">打ち間違いのまま入力</span>
